@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var intNum = 55;    //整数
+        var octalNum1 = 070;    //八进制的56
+        var octalNum2 = 079;    //无效的八进制数值
+        var octalNum3 = 08;     //无效的八进制数值
+
+        var floatNum1 = 1.1;    //推荐
+        var floatNum2 = .1      //有效，但不推荐
+
+        var result = Number.MAX_VALUE + Number.MAX_VALUE;
+        console.log(isFinite(result));
+
+        //NaN   即非数值，用于表示一个本来要返回数值的操作数未返回数值的情况
+        //任何涉及NaN的操作都会返回NaN，NaN与任何值都不相等，包括它自己
+        console.log(NaN == NaN);
+
+        //isNaN()函数用来判断该参数是否是数值,而不能转为数值的也将会返回true-
+        console.log(isNaN (NaN));
+        console.log(isNaN (10));
+        console.log(isNaN ('10'));
+        console.log(isNaN ('blue'));
+        console.log(isNaN (true));
+
+        //数值转换 Number()、paresInt()、parseFloat()
+        var num1 = Number('Helloo world');  //NaN
+        var num2 = Number('');              //0
+        var num3 = Number('0001');          //1
+        var num4 = Number(true);            //1
+
+        //paresInt
+        var num5 = parseInt('1234blue');    //123
+        var num6 = parseInt('');            //NaN
+        var num7 = parseInt('0xA');         //10  十六进制数
+        var num8 = parseInt(22.5);          //22
+        var num9 = parseInt('070', 8);         //56  八进制数
+        var num10 = parseInt('70');         //70  十进制数
+        var num11 = parseInt('0xf');        //15  十六进制数
+        console.log(num9);                  //指定基数会影响到输出的结果
+
+        //paresFloat    只解析10进制
+        var float1 = parseFloat('1234blue');    //1234
+        var float2 = parseFloat('0xA');         //0
+        var float3 = parseFloat('22.5');        //22.5
+        var float4 = parseFloat('22.34.5');     //22.34
+        var float5 = parseFloat('0908.5');      //908.5
+        var float6 = parseFloat('3.125e7');     //31250000
+    </script>
+</body>
+</html>

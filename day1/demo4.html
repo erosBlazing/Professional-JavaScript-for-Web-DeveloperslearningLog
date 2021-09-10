@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var sum = a + b //即使没有分红也是有效语句，但不推荐
+        var diff = a - b;//有效语句，推荐
+
+        if (test)
+            alert(false);   //有效但容易出错，不推荐使用
+        
+        if (test) {
+            alert(false);
+        };  //推荐使用
+    </script>
+</body>
+</html>

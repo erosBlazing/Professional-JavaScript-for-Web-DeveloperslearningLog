@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //字符串可以由单引号或双引号表示
+        var firstName = 'Nicholas';
+        var lastName = "Zakas"; //字符串以单引号开头的，必须以单引号结尾，以双引号开头的必须以双引号结尾
+        //var firstName = 'Nicholas"    语法错误
+
+        //字符字面量可以出现在字符串中的任意位置，而且也将被作为一个字符来解析
+        var text = 'This is the letter sigma: \u03a3.';
+        //任何字符串的长度都可以通过其length属性取得
+        console.log(text.length);
+
+        //字符串是不可被改变的，要想改变字符串，先要销毁掉原有的字符串，然后再用另一个包含新值得字符串填充该变量
+        var lang = 'Java';
+        lang += 'Script';
+
+        //string类型的数据转换
+        //toString  null和undefined不具备这个方法
+        var age = 11;
+        var ageAsString = age.toString();   //字符串11
+        var fund = true;
+        var foundAsString = fund.toString();    //字符串true
+
+        //在数值调用toString方法时可以传递一个参数，输出数值的基数
+        var num = 10;
+        console.log(num.toString());    //'10'
+        console.log(num.toString(2));   //按照二进制输出，'1010'
+
+        //String()函数可以将任何值转换为字符串，包括null和undefined
+        var value1 = 10;    //'10'
+        var value2 = true;  //'true'
+        var value3 = null;  //'null'
+        var value4;         //'undefined'
+        console.log(value1);
+        console.log(value2);
+        console.log(value3);
+        console.log(value4);
+    </script>
+</body>
+</html>

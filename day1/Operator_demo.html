@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //前置递增操作符
+        var age = 29;
+        console.log(++age); //等同于age = age + 1
+        
+        //前置递减操作符
+        console.log(--age);
+
+        var antotherAge = --age + 2;
+        console.log(antotherAge);
+
+        var num1 = 2;
+        var num2 = 20;
+        var num3 = --num1 + num2    //等于21
+        var num4 = num1 + num2;     //等于21
+
+        //后置操作符
+        console.log(age++);
+        console.log(age);
+
+        var s1 = '2';
+        var s2 = 'z';
+        var b = false;
+        var f = 1.1;
+        var o = {
+            valueOf:function() {
+                return -1
+            }
+        };
+        console.log(s1++);  //3
+        console.log(s2++);  //NaN
+        console.log(b++);   //数值1
+        console.log(f--);   
+        console.log(o--);
+
+        //一元操作符
+        console.log(s1 = +s1);
+        console.log(s2 = +s2);
+        console.log(b = +b);
+        console.log(f = -f);   
+        console.log(o = -o);
+
+        //一元减操作符主要用于表示负数
+        console.log(s1 = -s1);
+    </script>
+</body>
+</html>
