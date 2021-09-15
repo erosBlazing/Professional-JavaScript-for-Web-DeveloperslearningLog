@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //逻辑非，以 ! 表示，无论这个值是什么数据类型，这个操作符首先会将它的操作数转换为一个布尔值，然后再对其求反。
+        console.log(!false);    //true
+        console.log(!'blue');   //false
+        console.log(!0);        //true
+        console.log(!NaN);      //true
+        console.log(!'');       //true
+        console.log(!12345);    //false
+        //使用第二个逻辑非操作时，就会对该布尔值求反
+        console.log(!!'blue');  //true
+
+        //逻辑非遵循以下规则
+        //1.如果操作数是一个对象，返回false
+        //2.如果操作数是一个空字符串，返回true
+        //3.如果操作数是一个非空字符串，返回false
+        //4.如果操作数是数值0，返回true
+        //5.如果操作数是任意非0数值（包括Infinity），返回false
+        //6.如果操作数是null，返回true
+        //7.如果操作数是NaN，返回true
+        //8.如果操作数是undefined，返回true
+
+
+        //逻辑与，以 && 表示，可以应用于任何类型的操作数，而不仅仅是布尔值，再有一个操作数不是布尔值的情况下，逻辑与操作就不一定返回布尔值
+        // var found = true;
+        // var result = (found && someUndefinedVariable);  //这里会发生错误
+        // console.log(result);    //这里不会执行
+        var found = false;
+        var result = (found && someUndefinedVariable);  //这里不会报错
+        console.log(result) //这里会执行
+
+        //逻辑与遵循下列规则
+        //1.如果第一个操作数是对象，则返回第二个操作数
+        //2.如果第二个操作数是对象，则只有在第一个操作数的求值结果为true的情况下才会返回该对象
+        //3.如果两个操作数都是对象，则返回第二个操作数
+        //4.如果第一个操作数是null，则返回null
+        //5.如果第一个操作数是NaN，则返回NaN
+        //6.如果第一个操作数是undefined，则返回undefined
+
+        //逻辑或，以 || 表示，如果有一个操作数不是布尔值，逻辑或也不一定会返回布尔值
+        // var found = true;
+        // var result = (found || someUndefinedVariable);  //不会发生错误
+        // console.log(result);    //会执行
+        var found = false;
+        var result = (found || someUndefinedVariable);  //会发生错误
+        console.log(result);    //不会执行
+
+        //逻辑或遵循下列规则
+        //1.如果第一个操作数是对象，则返回第一个操作数
+        //2.如果第一个操作数求值的结果为false，则返回第二个操作数
+        //3.如果两个操作数都是对象，则返回第一个操作数
+        //4.如果两个操作数都是null，则返回null
+        //5.如果两个操作数都是NaN，则返回NaN
+        //6.如果第一个操作数是undefined，则返回undefined
+    </script>
+</body>
+</html>

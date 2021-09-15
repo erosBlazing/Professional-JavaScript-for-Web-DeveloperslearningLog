@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var num = -18;
+        // // alert(num.toString(2)); //-10010
+
+        //按位非    返回数值的反码
+        var num1 = 25;
+        var num2 = ~num1;
+        console.log(num2);
+
+        //按位与    只有在两个数值的对应位都是1时才返回1，任何一位是0，结果都是0
+        var result = 25 & 3;
+        console.log(result);
+
+        //按位或    两个数值对应位有一位是1就返回1，而只有在两个对应位都是0时，才返回0
+        var result2 = 25 | 3;
+        console.log(result2);
+
+        //按位异或  在两个数值对应位上只有一个1时才返回1，如果对应位同时为1或0，则都返回0
+        var result3 = 25 ^ 3;
+        console.log(result3);
+
+        //左移  将数值的所有为向左移动指定的位数。左移位后，原数值右侧会多出5个空位，以0来填充，左移不会影响操作数的符号位
+        var oldValue = 2;
+        var newValue = oldValue << 5;
+
+        //右移  将数值向右移动，保留符号位
+        var oldValue2 = 64;
+        var newValue2 = oldValue2 >> 5;
+
+        //无符号右移    将数值的所有32位都向右移动，对于正数来说无符号右移与有符号右移相同
+        var oldValue3 = 64;
+        var newValue3 = oldValue3 >>> 5;
+
+        //当无符号右移时，会将负数的二进制当成正数的二进制码。而且由于负数以其绝对值的二进制补码形式表示，因此会导致无符号右移后的结果非常之大。
+        var oldValue4 = -64;    //等于二进制的00000111111111111111111111111110
+        var newValue4 = oldValue4 >>> 5;    //134217726
+
+        var newValue5 = ~oldValue4;
+        console.log(newValue5);
+
+    </script>
+</body>
+</html>
