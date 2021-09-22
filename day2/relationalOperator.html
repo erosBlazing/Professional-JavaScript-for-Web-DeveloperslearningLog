@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //关系操作符都返回一个布尔值
+        var result1 = 5 > 3;    //true  
+        var result2 = 5 < 3;    //false
+
+        //关系操作符相应的规则
+        //1.如果两个操作数都是数值，则执行数值比较
+        //2.如果两个操作数都是字符串，则比较两个字符串对应的字符编码值
+        //3.如果一个操作数是数值，则将另一个操作数转换为一个数值，然后执行数值比较
+        //4.如果一个操作数是对象，则调用这个对象的valueOf()方法，用得到的结果按照前面的规则执行比较。如果没有对象没用valueOf方法，则调用toString()方法，并用得到的结果按照前面的规则执行比较
+        //5.如果一个操作数是布尔值，则先将其专换为数值进行比较。
+
+        var result = 'Brick' < 'alphabet';  //true
+        //字符串进行比较时，比较每个字符的对应字符编码值
+
+        var result3 = 'Brick'.toLowerCase() < 'alphabet'.toLowerCase(); //false
+
+        //字符串比较的是字符编码值
+        var result4 = '23' < '3'; //true
+
+        //将字符串23转换为数值23，再进行比较
+        var result5 = '23' < 3; //false
+
+        //字符串a转换为NaN
+        var result6 = 'a' < 3;  //false
+
+        //任何操作数与NaN进行比较，结果都是false
+        var result7 = NaN < 3;  //false
+        var result8 = NaN >= 3; //false
+    </script>
+</body>
+</html>

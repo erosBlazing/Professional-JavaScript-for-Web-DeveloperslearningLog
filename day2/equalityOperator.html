@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //相等操作符由 == 表示，不相等操作符由 != 表示
+        
+        //在转换不同的数据类型时，相等和不相等操作符遵循下列基本规则
+        //1.如果有一个操作数是布尔值，则在比较相等性之前先将其转换为数值-false转换为0，而true转换为1
+        //2.如果一个操作数是字符串，另一个操作数是数值，在比较相等性之前先将字符串转换为数值
+        //3.如果一个操作数是对象，而另一个操作数不是，则调用对象的valueOf()方法，用得到的基本类型值按照前面的规则进行比较
+        
+        //这两个操作符在进行比较时，遵循下列规则
+        //1.null和undefined是相等的
+        //2.要比较相等性之前，不能将null和undefined转换成其他任何值
+        //3.如果有一个操作数是NaN，则相等操作符返回false，不相等操作符返回true；即使两个操作数都是NaN，相等操作符也返回false，因为按照规则NaN不等于任何数，包括它自己
+        //4.如果两个操作数都是对象，则比较它们是不是同一个对象。如果两个操作数都指向同一个对象，则相等操作符返回true，否则，返回false
+
+        //全等操作符由 === 表示，不全等操作符由 !== 表示
+        //除了在比较之前不转换操作数之外，与相等操作符和不等操作符没有什么区别
+
+        var result1 = ('55' == 55); //true，因为转换后相等
+        var result2 = ('55' === 55); //false，因为不同的数据类型不相等
+
+        var result3 = ('55' != 55); //false，因为转换后相等
+        var result4 = ('55' !== 55);//true，因为不同的数据类型不相等
+    </script>
+</body>
+</html>

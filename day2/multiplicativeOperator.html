@@ -32,6 +32,47 @@
         //6.如果是Infinity与Infinity相除，则结果是NaN
         //7.如果是Infinity被任何非0数值除，则结果是Infinity或-Infinity
         //8.如果有一个操作数不是数值，则在后台调用 Number() 将其转换为数值，然后在应用上面的规则
+
+        //加性操作符
+        var result = 1 + 2;
+        //在处理特殊值的情况下，加法操作符遵循下列特殊的规则
+        //1.如果操作数都是数值，执行常规的加法计算
+        //2.如果+0加+0，则结果是+0
+        //3.如果-0加-0，则结果是-0
+        //4.如果+0加-0，则结果是+0
+        //5.如果有一个操作数是NaN，则结果是NaN
+        //6.如果两个操作数是字符串，则将第二个操作数与第一个拼接起来；如果只有一个操作数是字符串，则将另一个操作数转换为字符串，然后再进行拼接
+        //7.如果是Infinity与-Infinity相加，则结果是NaN。   
+        //8.如果是Infinity与Infinity相加，则结果是Infinity
+        //9.如果是-Infinity与-Infinity相加，则结果是-Infinity
+
+        var num1 = 5;
+        var num2 = 10;
+        var meassage = 'The sum of 5 and 10 is' +num1 + num2;
+        console.log(meassage)   //'The sum of 5 and 10 is 510'
+        // var meassage = 'The sum of 5 and 10 is' + (num1 + num2); //如果要想先对数值进行算术计算，应该先用括号
+
+        //减法操作符
+        var result = 2 - 1;
+        //在处理特殊值的情况下，减法操作符遵循下列特殊的规则
+        //1.如果操作数都是数值，执行常规的减法计算，并返回结果
+        //2.如果+0减+0，则结果是+0
+        //3.如果-0减+0，则结果是-0
+        //4.如果-0加-0，则结果是+0
+        //5.如果有一个操作数是NaN，则结果是NaN
+        //6.如果是Infinity与-Infinity相减，则结果是-Infinity   
+        //7.如果是-Infinity与Infinity相减，则结果是-Infinity
+        //8.如果是-Infinity与-Infinity相减，则结果是NaN
+        //9.如果有一个操作数是字符串、布尔值、null或undefined,则现在后台调用Number()函数将其转换为数值然后再根据前面的规则执行减法计算。如果转换的结果是NaN，则减法的结果就是NaN
+        //10.如果有一个操作数是对象，则调用对象的valueOf()方法以取得表示该对象的数值，如果得到的值为NaN，则减法的结果就是NaN。
+        //如果对象没有valueOf()方法，则调用其toString()方法，并将得到的字符串转换为数值
+
+        var result1 = 5 - true; //4，因为将true转换为1
+        var result2 = NaN - 1;  //NaN
+        var result3 = 5 - 3;    //2
+        var result4 = 5 - '';   //5，空字符串被转换成了0
+        var result5 = 5 - '2';  //3，'2'被转换成了2
+        var result6 = 5 - null; //5，null被转换成了0
     </script>
 </body>
 </html>
