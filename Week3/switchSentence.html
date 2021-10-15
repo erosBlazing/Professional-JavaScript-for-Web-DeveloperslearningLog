@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //switch 语句与 if 语句的关系最为密切，而且也是其它语言中普遍使用的一种流控制语句。
+        //语法
+        // switch (exprssion) {
+        //     case value: statement
+        //     break;
+        //     case value: statement
+        //     break;
+        //     case value: statement
+        //     break;
+        //     case value: statement
+        //     break;
+        //     case value: statement
+        //     break;
+        //     default: statement;
+        // }
+        //switch 语句中的每一种情形（case）的含义是：“如果表达式等于这个值（value），则执行后面的语句（statement）”而 break 关键字会导致代码执行流跳出 switch 语句。
+        //如果省略 break 关键字，就会导致执行完当前的 case 继续执行下一个 case。最后的 default 关键字则用于在表达式不匹配前面任何一种情形的时候，执行机动代码，相当于 else
+
+        //通过为每个 case 后面都添加一个 break 语句，就可以避免同时执行多个 case 代码的情况。假如确实需要混合几种情形，不要忘记在代码中添加注释，说明是有意省略 break 关键字
+        // switch (i) {
+        //     case 25:
+        //     // 合并两种情形
+        //     case 35:
+        //         alert('35');
+        //     case 45:
+        //         alert('45')
+        // }
+
+        //switch 语句中可以使用任何数据类型，其次每个 case 的值不一定是常量，可以是变量，甚至是表达式
+        switch ('hello world') {
+            case 'hello' + ' world':
+                alert('Greeting was found.');
+                break;
+            case 'goodbye':
+                alert('Closing was found.');
+                break;
+            default:
+                alert('Unexpected message was found.')
+        }
+    </script>
+</body>
+</html>

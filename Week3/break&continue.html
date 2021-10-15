@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //break continue 语句都是用于在循环中精确控制代码的执行。break 语句会立即退出循环，强制执行循环之后的代码。而 continue 语句是退出循环之后，再从循环的顶部继续执行
+        var num = 0;
+        for (var i = 1; i < 10; i++) {
+            if (i % 5 == 0) {
+                break;
+            }
+            num++;
+        }
+        console.log(num);
+
+        var num1 = 0;
+        for (var i = 1; i < 10; i++) {
+            if (i % 5 == 0) {
+                continue;
+            }
+            num1++;
+        }
+        console.log(num1);
+
+        //break 语句和 continue 语句都可以与 label 语句联合使用，从而返回代码中特定的位置，这种脸和使用的情况多发生在循环嵌套的情况下。
+        var num2 = 0;
+
+        outermost:
+        for (var i = 0; i < 10; i++) {
+            for (var j = 0; j < 10; j++) {
+                if (i == 5 && j == 5) {
+                    break outermost;
+                }
+                num2++;
+            }
+        }
+        console.log(num2);
+
+        var num3 = 0;
+        outermost:
+        for (var i = 0; i < 10; i++) {
+            for (var j = 0; j < 10; j++) {
+                if (i == 5 && j == 5) {
+                    continue outermost;
+                }
+                num3++;
+            }
+        }
+        console.log(num3);
+    </script>
+</body>
+</html>

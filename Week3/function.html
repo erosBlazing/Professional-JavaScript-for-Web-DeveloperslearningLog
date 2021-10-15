@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //函数的基本语法
+        // function functionName(arg0, arg1,...argn) {
+            // statements
+        // }
+        //示例
+        function sayHi (name, message) {
+            console.log('Hello ' + name + ',' + message);
+        }
+        //调用sayHi函数
+        sayHi('Nicholas', "how are you today?");
+
+        //函数在定义时不必指定是否返回值。实际上，任何函数在任何时候都可以通过 return 语句后跟要返回的值来实现返回值
+        //这个函数会在 return 语句执行完后停止并立即退出。因此位于 return 语句之后的任何代码都永远不会执行
+        function sum (num1, num2) {
+            return num1 + num2;
+            alert('Hello world')
+        }
+        var result = sum(5, 10);
+        console.log(result);
+
+        //一个函数可以包含多个 return 语句
+        function diff (num1, num2) {
+            if (num1 < num2) {
+                return num2 - num1;
+            } else {
+                return num1 - num2;
+            }
+        }
+    </script>
+</body>
+</html>

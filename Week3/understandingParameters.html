@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //传递参数时可以不管参数的数据类型、参数的多少，函数接收到的是一个数组，在函数体内部可以通过 arguments 对象来访问参数数组，arguments 对象只是与数组类似，但并不是数组，可以使用方括号语法
+        function sayHi (name, message) {
+            console.log('Hello ' + arguments[0] + ',' + arguments[1]);
+        }
+        //命名的参数只是提供了便利，但不是必需
+
+        //通过访问 arguments 对象的 length 属性可以获知有多少个参数传递给了函数。
+        function howManyArgs () {
+            alert (arguments.length);
+        }
+        howManyArgs('sting', 45);
+        howManyArgs();
+        howManyArgs(12);
+
+        //利用这一点让函数能够接收任意参数并分别实现功能
+        function doAdd () {
+            if (arguments.length == 1) {
+                alert (arguments [0] + 10);
+            } else if (arguments.length == 2) {
+                alert (arguments[0] + arguments[1]);
+            }
+        }
+        doAdd(10);
+        doAdd(30, 20);
+
+        //arguments 对象可以与命名参数一起使用，arguments 对象的值永远与对应命名参数的值保持同步
+        function doAdd (num1, num2) {
+            if (arguments.length == 1) {
+                alert (num1 + 10);
+            } else if (arguments.length == 2) {
+                alert (arguments[0] + num2);
+            }
+        }
+    </script>
+</body>
+</html>
