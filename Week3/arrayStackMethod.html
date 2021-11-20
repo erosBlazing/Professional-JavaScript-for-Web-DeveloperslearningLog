@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ECMAScript 数组也提供了一种让数组的行为类似于其他数据结构的方法。具体说来，数组可以表现得像栈一样，后者是一种可以限制插入和删除项的数据结构。栈是一种 LIFO（Last-In-First-Out,后进先出）的数据结构，也就是最新添加的项最早被移除。而栈中项的插入（叫做推入）和移除（叫做弹出），只发生在一个位置——栈的顶部，ECMAScript为数组专门提供了 push() 和 pop()方法，以便实现类似栈的行为。
+
+        //push 方法可以接收任意数量的参数，把它们逐个添加到数组末尾，并返回修改后数组的长度。而 pop() 方法则从数组末尾移除最后一项，减少数组的 length 值，然后返回移除的项。
+        var colors = new Array();   //创建数组
+        var count = colors.push('red', 'green');    //推入两项
+        alert(count);   //2
+
+        count = colors.push('black');   //推入另一项
+        alert(count);   //3
+
+        var item = colors.pop();    //取得最后一项
+        alert(item);    //'black'
+        alert(colors.length);   //2
+
+        //可以将栈方法与其他数组方法连用
+        var colors = ['red', 'blue'];
+        colors.push('brown');   //添加另一项
+        colors[3] = 'black' //添加一项
+        alert(colors.length);   //4
+
+        var item = colors.pop();    //取得最后一项
+        alert(item);    //'black'
+    </script>
+</body>
+</html>

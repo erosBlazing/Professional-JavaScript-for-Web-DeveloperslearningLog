@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //在其他语言中，可以为一个函数编写两个定义，只要这两个定义的签名（接受的参数的类型和数量）不同即可，而 ECMAscript 函数没有签名，因为其参数是由包含0或多个值的数组来表示
+        //如果在 ECMAscript 中定义了两个名字相同的函数，则该名字只属于后定义的函数。
+        function addSomeNumber (num) {
+            return num + 100;
+        }
+        function addSomeNumber (num) {
+            return num + 200;
+        }
+        var result = addSomeNumber(100);
+        console.log(result);    //300
+    </script>
+</body>
+</html>

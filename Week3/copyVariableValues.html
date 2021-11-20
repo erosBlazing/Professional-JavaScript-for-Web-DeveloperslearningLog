@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //如果将一个变量向另一个变量复制基本类型的值，会在变量对象上创建一个新值，然后把该值复制到为新变量分配的位置上，复制操作结束后，两个变量可以参与任何操作而不会相互影响。
+        var num1 = 5;
+        for(num1; num1 <= 10; num1++) {
+            console.log(num1);
+        }
+        console.log(num1);
+        
+        var num2 = num1;
+        for(num2; num2 <= 12; num2++) {
+            console.log(num2);
+        }
+        console.log(num2);
+
+
+        //当一个变量向另一个变量复制引用类型的值时，同样也会将存储在变量对象中的值复制一份放到为新变量分配的空间中。不同的是，这个值的副本实际上是一个指针，而这个指针指向存储在堆中的一个对象。复制操作结束后，两个变量实际上将引用同一个对象。因此改变其中一个变量，就会影响另外一个变量
+
+    </script>
+</body>
+</html>

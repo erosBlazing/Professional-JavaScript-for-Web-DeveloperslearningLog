@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ECMAScript中所有函数的参数都是按值传递的。也就是说，把函数外部的值赋值给函数内部的参数，就和把一个值从一个变量复制到另一个变量一样。
+        //而引用类型值的传递，就如同引用类型变量的复制一样。
+        //在向参数传递基本类型的值时，被传递的值会被复制给一个局部变量（即命名参数，或者用ECMAScript的概念来说，就是arguments 对象中的一个元素）
+        function addTen (num) {
+            num += 10;
+            return num;
+        }
+        var count = 20;
+        var result = addTen(count);
+        console.log(count); //20，没有变化
+        console.log(result);    //30
+        console.log(count); //20
+
+        //引用类型的参数传递
+        // function setName (obj) {
+        //     obj.name = 'Nicholas';
+        // }
+        // var person = new Object();
+        // setName(person);
+        // console.log(person.name);   //Nicholas
+        //在这个函数内部 obj 和 person 引用的是同一个对象。换句话说，即使变量是按值传递的，obj也会按引用来访问同一个对象。
+
+        //证明参数是按值传递的
+        function setName(obj) {
+            obj.name = 'Nicholas';
+            obj = new Object();
+            obj.name = 'Greg';
+        }
+        var person = new Object();
+        setName(person);
+        console.log(person.name);   //Nicholas
+    </script>
+</body>
+</html>

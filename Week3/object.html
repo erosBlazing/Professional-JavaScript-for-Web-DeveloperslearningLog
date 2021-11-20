@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //对象是某个特定引用类型的实例。新对象是使用 new 操作附后跟一个构造函数来创建的。构造函数本身就是一个函数，只不过该函数是出于创建新对象的目的而定义的。
+        var person = new Object();
+
+        //创建object的两种方式
+        var person = new Object();
+        person.name = 'Nicholas';
+        person.age = 29;
+        //字面量形式创建object
+        var person = {
+            name : 'Nicholas',
+            age : 29
+        };
+        
+        // var person = {};   与 new object() 相同
+
+        //对象字面量也是向函数传递大量可选参数的首选方式
+        function displayInfo(args) {
+            var output = '';
+
+            if (typeof args.name == 'string') {
+                output += 'Name: ' + args.name + '\n';
+            }
+
+            if (typeof args.age == 'number') {
+                output += 'Age: ' + args.age + '\n';
+            }
+            alert(output);
+        }
+        displayInfo({
+            name: 'Nicholas',
+            age: 29
+        });
+        displayInfo({
+            name: 'Greg'
+        });
+
+        //在 JavaScript 中访问对象，可以使用点表示法，也可以使用方括号表示法来访问对象的属性
+        alert(person['name']);  //'Nicholas'
+        alert(person.name);  //'Nicholas'
+        //方括号的优点是可以通过变量来访问属性
+        var propertyName = 'name';
+        alert(person[propertyName]);    //'Nicholas'
+    </script>
+</body>
+</html>

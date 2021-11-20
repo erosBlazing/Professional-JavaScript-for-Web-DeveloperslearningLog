@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //所有对象都具有 toLocaleString()、toString()和valueOf()方法。其中，调用数组的 toString() 方法会返回由数组中每个值的字符串形式拼接而成的一个以逗号分隔的字符串。而调用 valueOf() 返回的还是数组。实际上，为了创建这个字符串会调用数组每一项的 toString() 方法
+        var colors = ['red', 'blue', 'green'];
+        alert(colors.toString());   //red,blue,green
+        alert(colors.valueOf());    //red,blue,green
+        alert(colors);  //red,blue,green
+
+        //toLocaleString() 方法经常也会返回与 toString()和 valueOf() 方法相同的值，但也不总是如此。当调用数组的 toLocaleString() 方法时，它也会创建一个数组值的以逗号分隔的字符串。而与前两个方法唯一不同之处在于，这一次为了取得每一项的值，调用的是每一项的toLocale-String() 方法，而不是 toString() 方法。
+        var person1 = {
+            toLocaleString : function() {
+                return 'Nikolaos';
+            },
+
+            toString : function() {
+                return 'Nicholas';
+            }
+        };
+        var person2 = {
+            toLocaleString : function() {
+                return 'grigorios';
+            },
+
+            toSting : function() {
+                return 'Greg';
+            }
+        };
+        var people = [person1, person2];
+        alert(people);  //Nicholas,Greg
+        alert(people.toString());   //Nicholas,Greg
+        alert(people.toLocaleString()); //Nikolaos,Grigorios
+
+        //数组继承的tolocaleString()、toString()和valueOf()方法，在默认情况下都会以逗号分隔的字符串的形式返回数组项。而如果使用 join() 方法，则可以使用不同的分隔符来构建这个字符串。
+        var colors = ['red', 'green', 'blue'];
+        alert(colors.join(','));    //red,green,blue
+        alert(colors.join('||'));   //red || green || blue
+        //如果不给 join() 方法传入任何值，或者给它传入 undefined，则使用逗号作为分隔符。
+    </script>
+</body>
+</html>

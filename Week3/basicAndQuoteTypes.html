@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ECMAscript 变量可能包含两种不同数据类型的值：基本类型值和引用类型值。基本类型值指的是简单的数据段，而引用类型值指那些可能由多个值构成的对象
+        //在将一个值赋给变量时，解析器必须确定这个值是基本类型值和引用类型值。基本类型值指的是简单的数据段，而引用类型值指那些可能由多个值构成的对象
+        //基本数据类型：Undefined、Null、Boolean、Number和String。这5种基本数据类型是按值访问，因为可以操作保存在变量种的实际的值
+        //引用类型的值是保存在内存中的对象。与其他语言不同，JavaScript不允许直接访问内存的位置，也就是说不能直接操作对象的内存空间。在操作对象时，实际上是在操作对象的引用而不是实际的对象。为此，引用类型的值是按引用访问的。
+        var person = new Object();
+        person.name = 'Nicholas';
+        alert(person.name);
+
+        //不能给基本类型的值添加属性，尽管这样做不会导致任何错误
+        var name = 'Nicholas';
+        name.age = 27;
+        alert(name.age);
+    </script>
+</body>
+</html>
