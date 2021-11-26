@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //解析器在向执行环境中加载数据时，对函数声明和函数表达式并非一视同仁。解析器会率先读取函数声明，并使其在执行任何代码之前可用（可以访问);至于函数表达式，则必须等到解析器执行它所在的代码行，才会真正被解释执行
+
+        // alert(sum(10, 10));
+        // function sum(num1, num2){
+        //     return num1 + num2;
+        // }
+        //以上代码完全可以正常运行。因为在代码开始执行之前，解析器就已经通过一个名为函数声明提升的过程，读取并将函数声明添加到执行环境中。对代码求值时，JavaScript 引擎在第一遍会声明函数并将它们放到源代码树的顶部。所以，即使声明函数的代码在调用它的代码后面，JavaScript 引擎也能把函数声明提升到顶部
+
+        alert(sum(10, 10));
+        var sum = function(num1, num2) {
+            return num1 + num2;
+        };
+        //以上代码之所以会在运行期间产生错误，原因在于函数位于一个初始化语句中，而不是一个函数声明。除了什么适合可以通过变量访问函数这一点区别之外，函数声明与函数表达式的语法其实是等价的。
+    </script>
+</body>
+</html>

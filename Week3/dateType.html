@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ECMAScript 中的 Date 类型是在早期 Java 中的 java.util.Date 类基础上构建的。为此，Date 类型使用自 UTC 1970年 1月 1日 午夜（零时）开始经过的毫秒数来保存日期。
+
+        //要创建一个日期对象，使用 new 操作符和 Date构造函数即可
+
+        var now = new Date();
+        console.log(now);
+
+        //在调用 Date 构造函数而不传递参数的情况下，新创建的对象自动获得当前日期和时间。如果想根据特定的日期和时间创建日期对象，必须传入表示该日期的毫秒数（即从 UTC 时间1970年 1月 1日午夜起至该日期止经过的毫秒数）。为了简化这一计算过程，ECMAScript 提供了两个方法：Date.parse() 和 Date.UTC()。
+
+        //Date.parse() 方法接收一个表示日期的字符串参数，如果传入的参数不能表示日期，那么它会返回NaN
+        var someDate = new Date(Date.parse('May 25, 2004'));
+        console.log(someDate);
+
+        //Date.UTC() 方法统一也返回表示日期的毫秒数，但它与Date.parse() 在构建值时使用不同的信息。Date.UTC() 的参数分别是年份、基于 0 的月份、月中的哪一天（1-31）、小时数（0-23）、分钟、秒、以及毫秒数。在这些参数中，只有前两个参数（年和月）是必需的。如果没有提供月中的天数，则假设天数为 1；如果省略其它的参数则统统假设为 0。
+        
+        //GMT时间 2000 年 1 月 1日 午夜零时
+        var y2k = new Date(Date.UTC(2000, 0));
+
+        //GMT时间 2005年 5月 5日 下午 5：55：55
+        var alFives = new Date(Date.UTC(2005, 4, 5, 17, 55, 55));
+
+        //ECMAScript5 添加了 Date.now() 方法，返回表示调用这个方法时的日期和时间的毫秒数。
+
+        //取得开始时间
+    //     var start = Date.now();
+
+    //     //调用函数
+    //     doSomething();
+
+    //     //取得停止时间
+    //     var stop = Date.now(),
+    //         result = stop - start;
+ </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ECMAScript 通过 RegExp 类型来支持正则表达式。使用类似 Perl 的语法
+        // var exprssion = / pattern / flags;
+
+        //其中的模式（pattern）部分可以是任何简单或复杂的正则表达式，可以包含字符类、限定符、分组、向前查找以及反向引用。每个正则表达式都可带有一或多个表示（flags），用以标明正则表达式的行为。
+
+        //正则表达式的匹配模式支持下列3个标志
+        // g：表示全局（global）模式，即模式将被应用于所有字符串，而非在发现第一个匹配项时立即停止
+        // i：表示不区分大小写（case-insenstitive）模式，即在确定匹配项时忽略模式与字符串的大小写
+        // m：表示多行（multiline）模式，即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项
+
+        /*
+        *匹配字符串中所有'at'的实例
+        */
+       var pattern1 = /at/g;
+
+      /*
+       * 匹配第一个'bat'或'cat',不区分大小写 
+       */
+      var pattern2 = /[bc]at/i;
+    
+      /*
+       *匹配所有已'at'结尾的3个字符的组合，不区分大小写 
+       */
+      var pattern3 = /.at/gi;
+
+      //与其他语言中的正则表达式类似，模式中使用的所有元字符都必须转义。正则表达式中的元字符包括：( [ { \ ^ $ | ) ? * + .]} 
+
+      /**
+       * 匹配第一个'bat'或'cat',不区分大小写
+       */
+      var pattern1 = /[bc]at/i;
+
+      /**
+       * 匹配第一个'[bc]at',不区分大小写
+       */
+      var pattern2 = /\[bc\]at/i;
+
+      /**
+       * 匹配所有以'at'结尾的3个字符的组合，不区分大小写
+       */
+      var pattern3 = /.at/gi;
+
+      /**
+       * 匹配所有'.at'，不区分大小写
+       */
+      var pattern4 = /\.at/gi;
+
+      //用RegExp 构造函数，它接收两个参数：一个是要匹配的字符串模式，另一个是可选的标志字符串。可以使用字面量定义的任何表达式，都可以使用构造函数来定义
+      var pattern5 = new RegExp('[bc]at', 'i');
+
+      //使用正则表达式字面量和使用 RegExp 构造函数创建的正则表达式不一样。在ECMAScript 3中，正则表达式字面量始终会共享同一个 RegExp 实例，而使用构造函数创建的每一个新 RegExp 实例都是一个新实例
+      var re = null,i;
+      
+      for (i = 0; i < 10; i++) {
+          re = /cat/g;
+          re.test('catastrophe');
+      }
+
+      for (i = 0; i < 10; i++) {
+          re = new RegExp('cat', 'g');
+          re.test('catastrophe');
+      }
+        
+    </script>
+</body>
+</html>

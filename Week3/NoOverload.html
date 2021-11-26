@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function addSomeNumber(num) {
+            return num + 100;
+        }
+
+        function addSomeNumber(num) {
+            return num + 200;
+        }
+
+        var result = addSomeNumber(100);    //300
+        console.log(result);
+        
+        //在创建第二个函数时，实际上覆盖了引用第一个函数的变量 addSomeNumber
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //与其他引用类型一样，Date 类型也重写了 toLocaleString()、toString() 和 valueOf() 方法；但这些方法返回的值与其他类型的方法不同。Date 类型的toLocalString() 方法会按照与浏览器设置的地区相适应的格式返回日期和时间。这大致意味着时间格式中会包含 AM 或 PM，但不会包含时区信息（具体格式因浏览器而异）。而 toString() 方法则通常返回带有时区信息的日期和时间。
+
+        //Internet Explorer 8 
+        // toLocaleString() — Thursday, February 01, 2007 12:00:00 AM 
+        // toString() — Thu Feb 1 00:00:00 PST 2007
+        //Firefox 3.5 
+        // toLocaleString() — Thursday, February 01, 2007 12:00:00 AM 
+        // toString() — Thu Feb 01 2007 00:00:00 GMT-0800 (Pacific Standard Time) 
+        // Safari 4 
+        // toLocaleString() — Thursday, February 01, 2007 00:00:00 
+        // toString() — Thu Feb 01 2007 00:00:00 GMT-0800 (Pacific Standard Time) 
+        // Chrome 4 
+        // toLocaleString() — Thu Feb 01 2007 00:00:00 GMT-0800 (Pacific Standard Time) 
+        // toString() — Thu Feb 01 2007 00:00:00 GMT-0800 (Pacific Standard Time) 
+        // Opera 10 
+        // toLocaleString() — 2/1/2007 12:00:00 AM 
+        // toString() — Thu, 01 Feb 2007 00:00:00 GMT-0800 
+
+        //Date类型的 valueOf() 方法，则根本不返回字符串，而是返回日期的毫秒表示。因此，可以方便使用比较操作符来比较日期值
+        var date1 = new Date(2007, 0, 1);   //'January 1，2007'
+        var date2 = new Date(2007, 1, 1);   //'February 1，2007'
+
+        alert(date1 < date2);   //true
+        alert(date1 > date2);   //false
+    </script>
+</body>
+</html>

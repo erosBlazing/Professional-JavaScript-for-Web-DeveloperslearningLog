@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <script>
+        //在函数内部，有两个特殊的对象：arguments 和 this。arguments 是一个类数组对象，包含着传入函数中的所有参数。虽然 arguments 的主要用途是保存函数参数，但这个对象还有一个名叫 callee 的属性，该属性是一个指针，指向拥有这个 arguments 对象的函数。
+        
+        function factorial(num) {
+            if (num <= 1) {
+                return 1;
+            } else {
+                return num * factorial(num-1)
+            }
+        }
+
+        //消除紧密耦合
+        function factorial(num) {
+            if (num <= 1) {
+                return 1;
+            } else {
+                return num * arguments.callee(num-1)
+            }
+        }
+        //重写后的 factorial() 函数体内，没有再引用函数名 factorial。这样，无论引用函数时的是什么名字，都可以保证正常完成递归调用。
+
+        var trueFactorial = factorial;
+
+        factorial = function() {
+            return 0;
+        };
+
+        alert(trueFactorial(5));    //120
+        alert(factorial(5));    //0
+        //在此，变量 trueFactorial 获得了 factorial 的值，实际上是在另一个位置上保存了一个函数的指针。然后，又将一个简单地返回0的。如果像原来的factorial() 那样不使用 arguments.callee，调用 trueFactorial() 仍然能够正常地计算阶乘；至于 factorial()，它现在只是一个返回 0 的函数
+
+        var a;
+        function a() {
+            console.log(10);
+        }
+        console.log(a);
+        //1)函数声明会置顶
+        // 2)变量声明也会置顶
+        // 3)函数声明比变量声明更置顶：）
+        // 4)变量和赋值语句一起书写，在js引擎解析时，会将其拆成声明和赋值2部分，声明置顶，赋值保留在原来位置
+        // 5)声明过的变量不会重复声明
+
+        // var c = 1;
+        // function c(c) {
+        //     console.log(c);
+        //     var c = 2;
+        // }
+        // c(3);
+
+        //函数的内部的另一个特殊对象是 this，其行为与 Java 和 C# 中的 this 大致类似。换句话说，this 引用的是函数据以执行的环境对象——或者也可以说是 this 值（当在网页的全局作用域中调用函数时，this 对象引用的就是window）
+
+        window.color = 'red';
+        var o = { color: 'blue' };
+
+        function sayColor() {
+            alert(this.color);
+        }
+
+        sayColor(); //'red'
+
+        o.sayColor = sayColor;
+        o.sayColor();   //'blue'
+        //谁调用函数，函数内部的 this 就指向谁
+    </script>
+</body>
+</html>
