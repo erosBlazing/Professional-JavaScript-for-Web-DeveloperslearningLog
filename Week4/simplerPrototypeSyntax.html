@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person() {
+
+        }
+
+        Person.prototype = {
+            // constructor: Person, //可以采用更改constructor指向
+            name: 'Nicholas',
+            age: 29,
+            job: 'Software Engineer',
+            sayName: function() {
+                alert(this.name);
+            }
+        };
+
+        //以对象字面量形式创建的新对象，有一个例外：constructor 属性不再指向 Person了。在这里使用的语法，本质上完全重写了默认的 prototype 对象，因此 constructor 属性也就变成了新对象得 constructor 属性(指向 Object 构造函数)，不再指向 Person 函数。此时，尽管 instanceof 操作符还能返回正确的结果，但通过 constructor 已经无法确定对象的类型
+
+        var friend = new Person();
+
+        alert(friend instanceof Object);    //true
+        alert(friend instanceof Person);    //true
+        alert(friend.constructor == Person);    //false
+        alert(friend.constructor == Object);    //true
+    </script>
+</body>
+</html>

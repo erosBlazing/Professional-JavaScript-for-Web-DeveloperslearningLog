@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //有两种方式使用 in 操作符：单独使用和在 for-in 循环中使用。在单独使用时，in 操作符会在通过对象能够访问给定属性时返回 true，无论该属性存在于实例中还是原型中。
+        
+        function Person() {
+
+        }
+
+        Person.prototype.name = 'Nicholas';
+        Person.prototype.age = 29;
+        Person.prototype.job = 'Software Engineer';
+        Person.prototype.sayName = function() {
+            alert(tihs.name);
+        };
+
+        var person1 = new Person();
+        var person2 = new Person();
+
+        alert(person1.hasOwnProperty('name'));  //false
+        alert('name' in person1);   //true
+
+        person1.name = "Greg"; 
+        alert(person1.name); //"Greg" ——来自实例
+        alert(person1.hasOwnProperty("name")); //true 
+        alert("name" in person1); //true 
+
+        alert(person2.name); //"Nicholas" ——来自原型
+        alert(person2.hasOwnProperty("name")); //false 
+        alert("name" in person2); //true 
+
+        delete person1.name; 
+        alert(person1.name); //"Nicholas" ——来自原型
+        alert(person1.hasOwnProperty("name")); //false 
+        alert("name" in person1); //true
+
+        //同时使用 hasOwnProperty() 方法和 in 操作符，就可以确定该属性到底是存在于对象中，还是存在于原型中
+
+        function hasPrototypeProperty(object, name) {
+            return !object.hasOwnProperty(name) && (name in object);
+        }
+
+        function Person() {
+
+        }
+
+        Person.prototype.name = 'Nicholas';
+        Person.prototype.age = 29;
+        Perosn.prototype.job = 'Software Engineer';
+        Person.prototype.sayName = function() {
+            alert(this.name);
+        };
+
+        var person = new Person();
+        alert(hasPrototypeProperty(person, 'name'));    //true
+
+        person.name = 'Greg';
+        alert(hasPrototypeProperty(perosn, 'name'));    //false
+
+        //要取得对象上所有可枚举的实例属性，可以使用 ECMAScript 5的 Object.keys() 方法。这个方法接收一个对象作为参数，返回一个包含所有可枚举属性的字符串数组
+
+        function Person() {
+
+        }
+
+        Person.prototype.name = 'Nicholas';
+        Person.prototype.age = 29;
+        Person.prototype.job = 'Software Engineer';
+        Person.prototype.sayName = function() {
+            alert(this.name);
+        };
+
+        var keys = Object.keys(Person.prototype);
+        alert(keys);    //'name,age,job,sayname'
+
+        var p1 = new Person();
+        p1.name = 'Rob';
+        p1.age = 31;
+        var p1keys = Object.keys(p1);
+        alert(p1keys);  //'name,age'
+
+        //如果想要得到所有的实例属性，无论它是否可枚举，都可以使用Object.getOwnPropertyNames() 方法
+
+        var keys = Object.getOwnPropertyNames(Person.prototype);
+        alert(keys);    //'constructor,name,age,job,sayName'
+    </script>
+</body>
+</html>

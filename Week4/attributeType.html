@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ECMASript 中有两种属性：数据属性和访问器属性
+        //数据属性包含一个数据值的位置。在这个位置可以读取和写入值。数据属性有 4个描述其行为的特性。
+        //[[Configurable]]: 表示能否通过 delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。像前面例子中那样直接在对象上定义的属性，它们的这个特性默认值为 true。
+        //[[Enumerable]]: 表示能否通过 for——in 循环返回属性。像前面例子中那样直接在对象上定义的属性，它们的这个特性默认值为 true。
+        //[[Writable]]: 表示能否修改属性的值。像前面例子中那样直接在对象上定义的属性，它们的这个特性默认值为 true。
+        //[[Value]]: 包含这个属性的数据值。读取属性值的时候，从这个位置读；写入属性值的时候，把新值保存在这个位置。这个特性的默认值为 undefined。
+        //对于像前面例子中那样直接在对象上定义的属性，它们的[[Configurable]]、[[Enumerable]]、[[Writable]]特性都被设置为 true，而 [[Value]]特性被设置为指定的值
+
+        var person = {
+            name: 'Nicholas'
+        };
+
+        //要修改属性默认的特性，必须使用 ECMAScript 5 的 Object.defineProperty() 方法。这个方法接收三个参数：属性所在的对象、属性的名字和一个描述符对象。其中，描述符（descriptor）对象的属性必须是：configurable、enumerable、writable 和 value。设置其中的一或多个值，可以修改对应的特性值。
+
+        var person = {};
+        Object.defineProperty(person, 'name', {
+            writable: false,
+            configurable: false,
+            value: 'Nicholas'
+        });
+
+        alert(person.name); //'Nicholas'
+        person.name = 'Greg';
+        alert(person.name); //'Nicholas'
+
+        //在非严格模式下什么也不会发生，而在严格模式下会导致错误。而且一旦把属性定义为不可配置的，就不能再把它变回可配置了。
+    </script>
+</body>
+</html>
