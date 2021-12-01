@@ -13,7 +13,7 @@
         }
 
         Person.prototype = {
-            // constructor: Person, //可以采用更改constructor指向
+            // constructor: Person, //可以采用更改constructor指向。如果通过这种方式重设 constructor 属性会导致它的[[Enumerable]] 特性被设置为 true。默认情况下，原生的 constructor 属性是不可枚举的，因此如果你使用兼容的 ECMAScript 5的 Javascript，可以试试 Object.defineProperty()。
             name: 'Nicholas',
             age: 29,
             job: 'Software Engineer',
