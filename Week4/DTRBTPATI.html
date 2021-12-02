@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function SuperType() {
+            this.property = true;
+        }
+
+        SuperType.prototype.getSuperValue = function() {
+            return this.property;
+        };
+
+        function SubType(){ 
+            this.subproperty = false; 
+        } 
+
+        //继承了 SuperType
+        SubType.prototype = new SuperType();
+
+        SubType.prototype.getSubValue = function() {
+            return this.subproperty;
+        };
+
+        var instance = new SubType();
+         
+        //可以通过两种方式来确定原型和实例之间的关系。第一种方式是使用 instanceof 操作符，只要用这个操作符来测试实例与原型链中出现过的构造函数，结果就会返回 true。
+
+        alert(instance instanceof Object);  //true
+        alert(instance instanceof SuperType);   //true
+        alert(instance instanceof SubType); //true
+
+        //由于原型链的关系，我们可以说 instance 是 Object、SuperType 或 SubType 中任何一个类型的实例。因此，测试这三个构造函数的结果都会返回了 true。
+
+        //第二种方式是使用 isPrototypeOf() 方法。同样，只要是原型链中出现过的原型，都可以说是该原型所派生的实例的原型，因此 isPrototypeOf() 方法也会返回 true。
+
+        alert(Object.prototype.isPrototypeOf(instance));    //true
+        alert(SuperType.prototype.isPrototypeOf(instance)); //true
+        alert(SubType.prototype.isPrototypeOf(instance));   //true
+    </script>
+</body>
+</html>

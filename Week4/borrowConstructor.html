@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //在解决原型中包含引用类型值所带来问题的过程中，开发人员开始使用一种叫做 借用构造函数（constructor stealing） 的基数（有时候也叫做伪造对象或经典继承）。这种技术的基本思想相当简单，即在子类型构造函数的内部调用超类型构造函数。别忘了，函数只不过是在特定环境中执行代码的对象，因此通过使用 apply() 和 call() 方法也可以在（将来）新创建的对象上执行构造函数
+
+        function SuperType() {
+            this.colors = ['red', 'blue', 'green'];
+        }
+
+        function SubType() {
+            //继承了SuperType
+            SubperType.call(this);
+        }
+
+        var instance1 = new SubType();
+        instance1.colors.push('black');
+        alert(instance1.colors);    //'red,blue,green,black'
+
+        var instance2 = new SubType();
+        alert(instance2.colors);    //'red,blue,green'
+
+        //相较于原型链而言，借用构造函数有一个很大的优势，即可以在子类型构造函数中向超类型构造函数传递参数
+
+        function SuperType(name) {
+            this.name = name;
+        }
+
+        function SubType() {
+            //继承了 SuperType，同时还传递了参数
+            SuperType.call(this, 'Nicholas');
+
+            //实例属性
+            this.age = 29;
+        }
+
+        var instance = new SubType();
+        alert(instance.name);   //'Nicholas'；
+        alert(instance.age);    //29
+    </script>
+</body>
+</html>
