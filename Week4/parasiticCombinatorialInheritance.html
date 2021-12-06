@@ -8,17 +8,36 @@
 </head>
 <body>
     <script>
-        function object(o) {
-            function F() {}
-            F.prototype = o;
-            return new F();
+        //组合继承是 JavaScript 最常用的继承模式；不过，它也有自己的不足。组合继承最大的问题就是无论什么情况下，都会调用两次超类型构造函数：一次是在创建子类型原型的时候，另一次是在子类型构造函数内部。没错，子类型最终会包含超类型对象的全部实例属性，但我们不得不在调用子类型构造函数时重写这些属性
+
+        function SuperType(name) {
+            this.name = name;
+            this.colors = ['red', 'blue', 'green'];
         }
-        var person = {
-            name: 'Nicholas',
-            friends: ['Shelby', 'Court', 'Van']
+
+        SuperType.prototype.sayName = function() {
+            alert(this.name);
         };
 
-        object(person);
+        function SubType(name, age) {
+            SuperType.call(this, name); //第二次调用 SuperType()
+
+            this.age = age;
+        }
+
+        SubType.prototype = new SuperType();    //第一次调用 SuperType()
+        SubType.prototype.constructor = SubType;
+        SubType.prototype.sayAge = function() {
+            alert(this.age);
+        };
+
+        //所谓寄生组合式继承，即通过借用构造函数来继承属性，通过原型链的混成形式来继承方法。其背后的基本思路是：不必为了指定子类型的原型而调用超类型的原型，然后再将结果指定给子类型的原型。
+
+        function inheritPertotype(subType, superType) {
+            var prototype = object(superType.prototype);    //创建对象
+            prototype.constructor = subType;    //增强对象
+            subType.prototype = prototype;  //指定对象
+        }
     </script>
 </body>
 </html>

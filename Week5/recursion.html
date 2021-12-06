@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //递归函数是在一个函数通过名字调用自身的情况下构成
+        function factorial(num) {
+            if (num <= 1) {
+                return 1;
+            } else {
+                return num * factorial(num - 1);
+            }
+        }
+        //这个函数表面看来没什么问题，但下面的代码却可能导致它出错
+
+        var anotherFactorial = factorial;
+        factorial = null;
+        alert(anotherFactorial(4)); //出错
+        //使用 arguments.callee 可以解决这个问题
+        //arguments.callee 是一个指向正在执行的函数的指针，因此可以用它来实现对函数的递归调用。
+
+        function factorial(num) {
+            if (num <= 1) {
+                return 1;
+            } else {
+                return num * arguments.callee(num - 1);
+            }
+        }
+    </script>
+</body>
+</html>
