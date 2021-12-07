@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //由于 IE9 之前的版本对 JScript 对象和 COM 对象使用不同的垃圾收集例程，因此闭包在 IE 的这些版本中会导致一些特殊的问题。具体来说，如果闭包的作用域链中保存着一个 HTMl 元素，那么就意味着该元素将无法倍销毁。
+
+        // function assignHandler() {
+        //     var element = document.getElementById('someElement');
+        //     element.onclick = function() {
+        //         alert(element.id);
+        //     }
+        // }
+
+        //以上代码创建了一个作为 element 元素事件处理程序的闭包，而这个闭包则又创建了一个循环引用。由于匿名函数保存了一个对 assignHandler() 的活动对象的引用，因此就会导致无法减少 element 的引用数。只要匿名函数存在，element 的引用数至少也是 1，因此它所占用的内存就永远不会被回收。
+
+        function assignHandler() {
+            var element = document.getElementById('someElement');
+            var id = element.id;    //基本数据类型
+
+            element.onclick = function() {
+                alert(id);  //解除循环引用
+            };
+
+            element = null;
+        }
+
+    </script>
+</body>
+</html>
