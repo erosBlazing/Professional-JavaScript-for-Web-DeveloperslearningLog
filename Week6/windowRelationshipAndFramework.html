@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <frameset rows='160,*'>
+        <frame src='frame.html' name='topFrame'>
+        <frameset cols='50%,50%'>
+            <frame src='anotherframe.html' name='leftFrame'>
+            <frame src='yetanotherframe.html' name='rightFrame'>
+        </frameset>
+    </frameset>
+    <script>
+        //如果页面中包含框架，则每个框架都拥有自己的 window 对象，并且保存在 frames 集合中。在 frames 集合中，可以通过数值索引（从0开始，从左至右，从上到下）或者框架名称来访问相应的 window 对象。每个 window 对象都有一个 name 属性，其中包含框架的名称。
+        
+        //上面的代码创建了一个框架集，其中一个框架居上，两个框架居下。对这个例子而言，可以通过 window.frames[0] 或者 window.frames['topFrame'] 来引用上方的框架。不过，恐怕你最好使用 top 而非 windo来引用这些框架。
+
+        //top 对象始终指向最高层的框架，也就是浏览器窗口。使用它可以确保在一个框架中正确地访问另一个框架。因为对于在一个框架中编写的任何代码来说，其中的 window 对象指向的都是那个框架的特定实例，而非最高层的框架。
+    </script>
+</body>
+</html>

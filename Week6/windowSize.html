@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //跨浏览器确定一个窗口的大小不是一件简单的事。IE9+、Firefox、Safari、Opera 和 Chrome 均为此提供了 4个 属性：innerWidth、innerHeight、outerWidth 和 outerHeight。在IE9+、Safari 和 Firefox中，outerWidth 和 outerHeight 返回浏览器窗口本身的尺寸（无论是从最外层的 window 对象还是从某个框架访问）。在 Opera 中，这两个属性的值表示页面视图容器的大小。而 innerWith 和 innerHeight 则表示该容器中页面视图区的大小（减去边框宽度）。在 Chrome 种，outerWidth、outerHeight 与 innerWidth、innerHeight 返回相同的值，即视口（viewport）大小而非浏览器窗口大小。
+
+        //在 IE、Firefox、Safari、Opera 和 Chrome 中，document.documentElement.clienWidth 和 document.documentElement.clienHeight 中保存了页面视口的信息。在 IE6 中，这些属性必须在标准模式下才有效；如果是混杂模式，就必须通过 document.body.documentElement.clienWidth 来访问获取相同的信息。而对于混杂模式下 Chrome，则无论通过 document.documentElement 还是 document.body 中的 clientWidth 和 clientHeight 属性，都可以取得视口的大小。
+
+        //虽然最终无法确定浏览器窗口本身的大小，但却可以取得页面视口的大小
+
+        var pageWidth = window.innerWidth,
+            pageHeight = window.innerHeight;
+
+        if(typeof pageWidth != 'number') {
+
+            if(document.compatMode == 'CSS1Compat') {
+                
+                pageWidth = document.documentElement.clientWidth;
+                pageHeight = document.documentElement.clientHeight;
+            } else {
+                pageWidth = document.body.clientWidth;
+                pageHeight = document.body.clientHeight;
+            }
+        }
+
+        //以上代码中，我们首先将 window.innerWidth 和 window.innerHeight 的值分别赋给了 pageWidth 和 pageHeight。然后检查 pageWidth 中保存的是不是一个数值；如果不是，则通过检查 document.compatMode 来确定页面是否处于标准模式。如果是，则分别使用 document.documentElement.clientWidth 和 document.documentElement.documentElement.clienHeight 的值。否则，就是用 document.body.clientWidth 和 document.body.clientHeight 的值。
+
+        //对于移动设备，window.innerWidth 和 window.innerHeight 保存着可见视口，也就是屏幕上可见页面区域的大小。移动 IE 浏览器不支持这些属性，但通过 document.documenElement.clientWidth 和 document.documentElement.clientHeight 提供了相同的信息。随着页面的缩放，这些值也会相应变化。
+
+        //在其他移动浏览器中，document.documentElement 度量的是布局视口，即渲染后页面的实际大小（与可见视口不同，可见是否只是整个页面的一小部分）。移动 IE 浏览器把布局视口的信息保存在 document.body.clientWidth 和 document.body.clientHeight 中。这些值不会随着页面缩放变化。
+
+        //另外，使用 resizeTo() 和 resizeBy() 方法可以调整浏览器窗口的大小。这两个方法都接收两个参数，其中 resizeTo() 接收浏览器窗口的新宽度和新高度，而 resizeBy() 接收新窗口与原窗口的宽度和高度之差
+
+        //调整到 100 * 100
+        window.resizeTo(100, 100);
+
+        //调整到200 * 150
+        window.resizeBy(100, 50);
+
+        //调整到 300 * 300
+        window.resizeTo(300, 300);
+
+        //需要注意的是，这两个方法与移动窗口位置的方法类似，也有可能被浏览器禁用；而且，在Opera 和 IE7 中默认就是禁用的。另外，这两个方法同样不适用于框架，而只能对最外层的 window 对象使用。
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //如果给 window.open() 传递的第二个参数并不是一个已经存在的窗口或框架，那么该方法就会根据在第三个参数位置上传入的字符串创建一个新窗口或新标签页。如果没有传入第三个参数，那么就会打开一个带有全部默认设置（工具栏、地址栏和状态栏等）的新浏览器窗口（或者打开一个新标签页——根据浏览器设置）在不打开新窗口的情况下，会忽略第三个参数
+        
+        //第三个参数是一个逗号分隔的设置字符串，表示在新窗口中都显示哪些特性。
+
+        window.open('https://www.baidu.com', 'wroxWindow', 'height=400', 'width=400, top=10, left=10, resizable=yes');
+
+        //window.open() 方法会返回一个指向新窗口的引用。引用的对象与其他 window 对象大致相似，但我们可以对其进行更多控制。例如，有些浏览器在默认情况下可能不允许我们针对主浏览器窗口调整大小或移动位置，但却允许我们针对通过 window.open() 创建的窗口调整大小或移动位置。通过这个返回对象的对象，可以像其他窗口一样操作新打开的窗口。
+
+        var wroWin = window.open('https://www.baidu.com', 'wroxWindow', 'height=400, width=400, top=10, left=10, resizable=yes');
+
+        //调整大小
+        wroxWin.resizeTo(500, 500);
+
+        //移动位置
+        wroxWin.moveTo(100, 100);
+
+        //调用 close() 方法还可以关闭新打开的窗口
+        wroxWin.close();
+
+        //但是，这个方法仅适用于通过 window.open() 打开的弹出窗口。对于浏览器的主窗口，如果没有得到用于得允许，是不能关闭它的。不过弹出窗口到时可以调用 top.close() 在不经用户允许的情况下关闭自己。弹出窗口关闭之后，窗口的引用仍然还在，但除了像下面这样检测其 closed 属性之外，已经没有其他用处了。
+
+        wroxWin.close();
+        alert(wroWin.closed);   //true
+
+        //新创建的 window 对象有一个 opener 属性，其中保存着打开它的原始窗口对象。这个属性只在弹出窗口中的最外层 window 对象(top)中有定义，而且指向调用 window.open() 的窗口或框架
+
+        var wroxWin = window.open('http://www.baidu.com', 'wroxWindow', 'height=400, width=400, top=10, left=10, resizable=yes');
+
+        alert(wroxWin.opener == window);    //true
+
+        //虽然弹出窗口中有一个指针指向打开它的原始窗口，但原始窗口中并没有这样的指针指向弹出窗口。窗口并不跟踪记录它们打开的弹出窗口，因此我们只能在必要的适合自己来手动实现跟踪。
+
+        //有些浏览器（如 IE8 和 Chrome）会在独立的进程中运行每个标签页。当一个标签页打开另一个标签页时，如果两个 window 对象之间需要彼此通信，那么新标签页就不能运行在独立的进程中。在 Chrome 中，将新创建的标签页的 opener 属性设置为 null，即表示在单独的进程中运行新标签页
+
+        var wroWin = window.open('http://www.baidu.com', 'wroxWindow', 'height=400, width=400, top=10, left=10, resizable=yes');
+
+        wroxWin.opener = null;
+
+        //将 opener 属性设置为 null 就是告诉浏览器新创建的标签页不需要与打开它的标签页通信，因此可以在独立的进程中运行。标签页之间的联系一旦切断，将没有办法恢复。
+    </script>
+</body>
+</html>

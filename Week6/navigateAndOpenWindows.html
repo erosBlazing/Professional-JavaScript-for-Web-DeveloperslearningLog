@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //使用 window.open() 方法既可以导航到一个特定的 URL，也可以打开一个新的浏览器窗口。这个方法可以接收 4个 参数：要加载的URL、窗口目标、一个特性字符串以及一个表示新页面是否取代浏览器历史记录中当前加载页面的布尔值。通常只须传递第一个参数，最后一个参数只在不打开新窗口的情况下使用。
+        //如果为 window.open() 传递了第二个参数，而且该参数是已有窗口或框架的名称，那么就会在具有该名称的窗口或框架中加载第一个参数指定的URL。
+
+        //等同于<a href='https://www.baidu.com' target='topFrame'></a>
+        window.open('http://www.baidu.com', 'topFrame');
+
+        //调用这行代码，就如同用户单击了 href 属性为 https://www.baidu.com，target 属性为 'topFrame' 的链接。如果有一个名叫 'topFrame' 的窗口或者框架，就会在该窗口或框架加载这个URL；否则，就会创建一个新窗口并将其命名为 'topFrame'。此外，第二个参数也可以是下列任何一个特殊的窗口名称：_self、_parent、_top 或 _blank
+    </script>
+</body>
+</html>

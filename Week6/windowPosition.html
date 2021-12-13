@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //用来确定和修改 window 对象位置的属性和方法有很多。IE、Safari、Opera 和 Chrome 都提供了 screenLeft 和 ScreenTop 属性，分别用于表示窗口相对于屏幕左边和上边的位置。Firefox 则在 screenX 和 screenY 属性中提供相同的窗口位置信息，Safari 和 Chrome 也同时支持这两个属性。Opera 虽然也在支持 screenX 和 screenY 属性，但与 screenLeft 和 screenTop 属性并不对应，因此建议大家不要再 Opera 中使用它们。
+
+        //获取浏览器左端到显示屏左端的距离
+        var leftPos = (typeof window.screenLeft == 'number') ? window.screenLeft : window.screenX;
+
+        var topPos = (typeof window.screenTop == 'number') ? window.screenTop : window.screenY;
+
+        //在使用这些值的过程中，还必须要注意一些小问题。在IE、Opera中，ScreenLeft 和 screenTop 中保存的是从屏幕左边和上边到由 window 对象表示的页面可见区域的距离。换句话说，如果 window 对象是最外层对象，而且浏览器窗口紧贴屏幕最上端——即 y 轴坐标为 0，那么 screenTop 的值就是位于页面的可见区域上方的浏览器工具栏的像素高度。但是，在 Chrome、Firefox 和 Safari 中，screenY 或 screenTop 中保存的是整个浏览器相对于屏幕的坐标值，即在窗口的 y 轴坐标为 0 时返回 0；
+
+        //Fire、Safari 和 Chrome 始终返回页面中的每个框架的 top.screenX 和 top.screenY 值、即使在页面由于被设置了外边距而发生偏移的情况下，相对于 window 对象使用 screenX 和 screenY 每次也都会返回相同的值。而 IE 和 Opera 则会给出框架相对于屏幕边界的精确坐标值。
+
+        //最终结果，就是无法在跨浏览器的条件取得窗口左边和上边的精确坐标值。然而，使用 moveTo() 和 moveBy() 方法倒是有可能将窗口精确地移动到一个新位置。这两个方法都接收两个参数，其中 moveTo() 接收的是新位置的 x 和 y 坐标值，而moveBy() 接收的是在水平和垂直方向上移动的像素数。
+
+        //将窗口移动到屏幕左上角
+        window.moveTo(0, 0);
+
+        //将窗口向下移动100像素
+        window.moveBy(0, 100);
+
+        //将窗口移动到(200, 300)
+        window.moveTo(200, 300);
+
+        //将窗口向左移动 50 像素
+        window.moveBy(-50, 0);
+
+        //需要值得注意的是，这两个方法可能会被浏览器禁用；而且，在 Opera 和 IE7（及更高版本）中默认就是禁用的。另外，这两个方法都不适用于框架，只能对最外层的 window 对象使用。
+    </script>
+</body>
+</html>
