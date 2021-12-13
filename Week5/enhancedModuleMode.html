@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //有人进一步改进了模块模式，即在返回对象之前加入对其增强的代码。这种增强的模块模式适合那些单例必须是某种类型的实例，同时还必须添加某些属性和方法对其加以增强的情况。
+
+        var singleton = function() {
+
+            //私有变量和私有函数
+            var privateVariable = 10;
+
+            function privateFunction() {
+                return false;
+            }
+
+            //创建对象
+            var object = new CustomType();
+
+            //添加特权/公有属性和方法
+            object.publicProperty = true;
+
+            object.publicMethod = function() {
+                privateVariable++;
+                return privateFunction();
+            };
+
+            //返回这个对象
+            return object;
+        }();
+
+        //application 对象必须是 BaseComponent 的实例，那么就可以使用以下代码
+
+        var application = function() {
+
+            //私有变量和函数
+            var components = new Array();
+
+            //初始化
+            components.push(new BaseComponent());
+
+            //创建 application 的一个局部副本
+            var app = new BaseComponent();
+
+            //公共接口
+            app.getComponentCount = function() {
+                return components.length;
+            };
+
+            app.registerComponent = function(component) {
+                if(typeof component == 'object') {
+                    components.push(component);
+                }
+            };
+
+            //返回这个副本
+            return app;
+        }();
+    </script>
+</body>
+</html>
