@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myDiv"></div>
+    <script>
+        //除了 Document 类型之外，Element 类型就要算是 Web 编程中最常用的类型了。Element 类型用于表现 XML 或 HTML 元素，提供了对元素标签名、子节点及特性的访问。Element 节点具有以下特征：
+
+        //nodeTyp 的值为 1；
+        //nodeName 的值为元素的标签名
+        //nodeValue 的值为 null
+        //parentNode 可能是 Document 或 Element
+        //其子节点可能是 Element、Text、Comment、ProcessingInstruction、CDATASection 或 EntityReference
+
+        //要访问元素的标签名，可以使用 nodeName 属性，也可以使用tagName 属性；这两个属性会返回相同的值
+
+        var div = document.getElementById("myDiv");
+        alert(div.tagName); //"DIV"
+        alert(div.tagName == div.nodeName); //true
+
+        //这里的元素标签名是 div，它拥有一个值为"myDiv"的 ID。div.tagName 实际上输出的是 "DIv" 而非 "div"。在 HTML 中，标签名始终都以全部大写表示；而在 XML（有时候也包括 XHTML）中，标签名始终会与源代码中的保持一致。假如你不确定自己的脚本将会在 HTML 还是 XML 文档中执行，最好是在比较之前将标签名转换为相同的大小写形式
+    </script>
+</body>
+</html>

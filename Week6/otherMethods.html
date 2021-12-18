@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul">
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+    </ul>
+    <script>
+        //有两个方法是所有类型的节点都有的。第一个就是 cloneNode()，用于创建调用这个方法的节点的一个完全相同的副本。cloneNode() 方法接受一个布尔值参数，表示是否执行深复制。在参数为 true 的情况下，执行深复制，也就是赋值节点及其整个子节点树；在参数为 false 的情况下，执行浅复制，即只复制节点本身。复制后返回的节点副本属于文档所有，但并没有为它指定父节点。因此，这个节点副本就成为了一个“孤儿”，除非通过 appendChild()、insertBefore() 或 replaceChild() 将它添加到文档中。
+
+        var myList = document.getElementById('ul');
+        var deepList = myList.cloneNode(true);
+        
+        for(var i = 0; i < deepList.childNodes.length; i++) {
+
+            var nodes = deepList.childNodes[i];
+            console.log(nodes);
+        }
+
+        var shallowList = myList.cloneNode(false);
+        console.log(shallowList);
+
+        //在这个例子中，deepList 中保存着一个对 myList 执行深复制得到的副本。因此，deepList 中包含 3个 列表项，每个列表项中都包含文本。而变量 shallowList 中保存着对 myList 执行浅复制得到的副本，因此它不包含子节点。deepList.childNodes.length 中的差异主要是因为 IE8 及更早版本与其他浏览器处理空白字符的方式不一样。IE9 之前的版本不会为空白符创建节点
+
+
+        //最后一个方法 normalize()，这个方法唯一的作用就是处理文档树中的文本节点。由于解析器的实现或 DOM 操作等原因，可能会出现文本节点不包含文本，或者接连出现两个文本节点的情况。当在某个节点上调用这个方法时，就会在该节点的后代节点中查找上述两种情况。如果招到了空文本节点，则删除它；如果找到相邻的文本节点，则将它们合并为一个文本节点。
+    </script>
+</body>
+</html>

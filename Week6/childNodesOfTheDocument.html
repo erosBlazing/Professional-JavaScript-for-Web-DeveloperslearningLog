@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //DOM 标准规定 Document 节点的子节点可以是 DoCumentType、Element、ProcessingInstruction 或 Comment，但还有两个内置的访问其子节点的快捷方式。第一个就是 documentElement 属性，该属性始终指向 HTML 页面中的 <html> 元素。另一个就是通过 childNodes 列表访问文档元素，但通过 documentElement 属性则能够更快捷、更直接地访问该元素。
+
+        //本页面在经过浏览器解析后，其文档只包含一个子节点，即 <html> 元素。可以通过 documentElement 或 childNodes 列表来访问这个元素
+
+        var html = document.documentElement;    //取得对<html>的引用
+        alert(html === document.childNodes[0]); //true
+        alert(html === document.firstChild);    //true
+
+        //documentElement、firstChild 和 childNodes[0]的值相同，都指向<html>元素
+
+        //作为 HTMLDocument 的实例，document 对象还有一个 body 属性，直接指向<body>元素。因为因为经常使用到。
+        
+        var body = document.body;   //取得对<body>的引用
+
+        //所有浏览器都支持 document.documentElement 和 document.body 属性
+
+        //Document 另一个可能的子节点是 DocumentType。通常将<!DOCTYPE> 标签看成一个与文档其他部分不同的实体，可以通过 doctype 属性来访问它的信息。
+
+        var doctype = document.doctype; //取得对<!DOCTYPE>的引用
+
+        //多数情况下，我们都用不着在 document 对象上调用 appendChild()、removeChild() 和 replaceChil() 方法，因为文档类型（如果存在的话）是只读的，而且它只能有一个元素子节点
+    </script>
+</body>
+</html>

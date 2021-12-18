@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //document.head 属性 引用文档的<head>元素。要引用文档的<head>元素，可以结合使用这个属性和另一种后备方法
+        
+        var head = document.head || document.getElementByTagName("head")[0];
+    </script>
+</body>
+</html>

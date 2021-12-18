@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var divs = document.getElementsByTagName("div"),
+            i,
+            div;
+        
+        for (i = 0; i < divs.length; i++) {
+
+            div = document.createElement("div");
+            document.body.appendChild(div);
+        }
+        //死循环，因为 NodeList 是动态集合，每当有新的 <div> 元素被添加到页面中，也会被添加到集合中来，结果就是 i 永远不可能等于 divs.length。
+
+        //NodeList 对象都是 "动态的"，这就意味着每次访问 NodeList 对象，都会运行一次查询。最好的办法就是尽量减少 DOM 操作。
+    </script>
+</body>
+</html>

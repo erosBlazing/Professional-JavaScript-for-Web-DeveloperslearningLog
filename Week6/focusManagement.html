@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //document.activeElement 这个属性始终会引用 DOM 中当前获得了焦点的元素。元素获得焦点的方式有页面加载、用户输入和在代码中调用 focus() 方法
+
+        var button = document.getElementById("myButton");
+        button.focus();
+        alert(document.activeElement === button);   //true
+
+        //默认情况下，文档刚刚加载完成时，document.activeElement 中保存的是 document.body 元素的引用。文档家在期间，document.activeElement 的值为null
+
+        alert(document.hasFocus()); //true  检测文档是否获得了焦点
+    </script>
+</body>
+</html>

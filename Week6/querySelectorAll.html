@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //querySelectorAll() 方法接收的参数也是一个 CSS 选择符。但返回的是所有匹配的元素。这个方法返回的是一个 NodeList 的实例。如果没有找到匹配的元素，NodeList 就是空
+
+        //取得某 div 中的所有 em 元素
+        var ems = document.querySelector('#myDiv').querySelectorAll("em");
+
+        //取得类名为 "selected" 的所有元素
+        var selecteds = document.querySelectorAll(".selected");
+
+        //取得所有 p 元素中的所有 strong 元素
+        var strongs = document.querySelectorAll("p strong");
+
+        //取得返回的 NodeList 中的每一个元素，可以使用 item() 方法，也可以使用方括号语法
+        var i, len, strong;
+        for (i = 0, len = strong.length; i < len; i++) {
+
+            strong = strongp[i];
+            strong.className = 'important';
+        }
+    </script>
+</body>
+</html>

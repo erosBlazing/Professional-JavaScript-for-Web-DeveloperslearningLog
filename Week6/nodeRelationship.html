@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //文档中所有的节点之间都存在这样或那样的关系。节点间的各种关系可以用传统的家族关系来描述，相当于把文档树比喻成家谱。在 HTML 中，可以将<body>元素看成是<html>元素的子元素；相应地，也就可以将<html>元素看成是<body>元素的父元素。而<head>元素，则可以看成是<body>元素的同胞元素，因为它们都是一个父元素<html>的直接子元素
+
+        //每个节点都有一个 childNodes 属性，其中保存着一个 NodeList 对象。NodeList 是一种类数组对象，用于保存一组有序的节点，可以通过位置来访问这些节点。请注意，虽然可以通过方括号语法来访问 NodeList 的值，而且这个对象也有 length 属性，但它并不是 Array 的实例。NodeList 对象的独特之处在于，它实际上是基于 DOM 解构动态执行查询的结果。因此 DOM 结构的变化能够自动反映在 NodeList 对象中。我们常说，NodeList 是有生命、有呼吸的对象，而不是在我们第一次访问它们的某个瞬间拍摄下来的一张快照
+
+        var firstChild = someNode.childNodes[0];
+        var secondChild = someNode.childNodes.item(1);
+        var count = someNode.childNodes.length;
+
+        //无论使用方括号还是使用 item() 方法都没有问题，但使用方括号语法看起来与访问数组相似，因此颇受一些开发人员的青睐。另外，要注意 length 属性表示的是访问 NodeList 的那一刻，其中包含的节点数量。对 arguments 对象使用 Array.prototype.slice() 方法可以将其转换为数组。而采用同样的方法，也可以将 NodeList 对象转换为数组
+
+        //在 IE8 及之前版本中无效
+        var arrayOfNodes = Array.prototype.slice.call(someNode.childNodes, 0);
+
+        //每个节点都有一个 parentNode 属性，该属性指向文档树中的父节点。包含在 childNodes 列表中的所有节点都具有相同的父节点，因此它们的 parentNode 属性都指向同一个节点。此外，包含在 childNodes 列表中的每个节点相互之间都是同胞节点。通过使用列表中每个节点的 previousSibling 和 nextSibling 属性，可以访问同一列表的其他节点。列表中第一个节点的 previousSibling 属性值为 null，而列表中最后一个节点的 nextSibling 属性的值同样也为 null
+
+        if (someNode.nextSibling === null) {
+
+            alert('Last node in the parents childNodes list.');
+        } else if (someNode.previouSibling === null) {
+
+            alert('First node in the parents childNodes list.');
+        }
+
+        //当然，如果列表只有一个节点，那么该节点的 nextSibling 和 previousSibling 都为 null。
+
+        //父节点与其第一个和最后一个子节点之间也存在特殊关系。父节点的 firstChild 和 lastChild 属性分别指向其 childNodes 列表中的第一个和最后一个节点。其中，someNode.firstChild 的值始终等于 someNode.childNodes[0],而 someNode.lastChild 的值始终等于 someNode.childNodes[someNode.childNodes.length-1]。在只有一个子节点的情况下，firstChild 和 lastChild 指向同一个节点。如果没有子节点，那么 firstChild 和 lastChild 的值均为null。
+
+        //在反映这些关系的所有属性当中，childNodes 属性与其他属性相比更方便一些，因为只须使用简单的关系指针，就可以通过它访问文档树中的任何节点。另外，hasChildNodes() 也是一个非常有用的方法，这个方法在节点包含一个或多个子节点的情况下返回 true；应该是，这是比查询 childNodes 列表的length 属性更简单的方法。
+
+        //所有节点都有的最后一个属性是 ownerDocument，该属性指向表示整个文档的文档节点。这种关系表示的是任何节点都属于它所在的文档，任何节点都不能同时存在于两个或更多个文档中。通过这个属性，我们可以不必在节点层次中通过层层回溯到达顶端，而是可以直接访问文档节点
+
+        
+    </script>
+</body>
+</html>

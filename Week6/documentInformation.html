@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //作为 HTMLDocument 的一个实例，document 对象还有一些标准的 Document 对象所没有的属性。这些属性提供了 document 对象所表现的网页的一些信息。其中第一个属性就是 title，包含着<title>元素中的文本——显示在浏览器窗口的标题栏或标签页上。通过这个属性可以取得当前页面的标题，也可以修改当前页面的标题并反映在浏览器的标题栏中。修改 title 属性的值不会改变<title>元素。
+        
+        //取得文档标题
+        var originalTitle = document.title;
+
+        //设置文档标题
+        document.title = 'New page title';
+
+        //URL、domain 和 referrer都与网页的请求有关。URL 属性中包含页面完整的 URL（即地址栏中显示的URL）在没有来源页面的情况下，referrer 属性中可能会包含空字符串。所有这些信息都存在于 HTTP 头部，只不过是通过这些属性让我们能够在 JavaScript 中访问它们而已。
+
+        //取得完整的 URL
+        var url = document.URL;
+
+        //取得域名
+        var domain = document.domain;
+
+        //取得来源页面的 URl
+        var referrer = document.referrer;
+
+        //在这 3个 属性中，只有 domain 是可以设置的。但由于安全方面的限制，也并非可以给 domain 设置任何值。如果 URL 中包含一个子域名，例如 p2p.wrox.com，那么就只能将 domain 设置为 'wrox.com'。不能将这个属性设置为 URL 中不包含的域
+
+        //假设页面来自 p2p.wrox.com域
+
+        document.domain = 'wrox.com';   //成功
+        document.domain = 'nczonline.net';  //出错
+
+        //当页面中包含来自其他子域的框架或内嵌框架时，能够设置 document.domain 就非常方便了。由于跨域安全限制，来自不同子域的页面无法通过 JavaScript 通信。而通过将每个页面的 document.domain 设置为相同的值，这些页面就可以互相访问对方包含的 JavaScript 对象。
+    </script>
+</body>
+</html>

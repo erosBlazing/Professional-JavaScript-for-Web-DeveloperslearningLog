@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //浏览器通过 alert()、confirm() 和 prompt() 方法可以调用系统对话框向用户显示消息。系统对话框与在浏览器中显示的网页没有关系，也不包含 HTML。它们的外观由操作系统及浏览器设置决定，而不是由 CSS决定。此外通过这几个方法打开的对话框都是同步和模态的。也就是说，显示这些对话框的时候代码会停止执行，而关掉这些对话框后代码又会恢复执行。
+
+        //本书各章经常会用到 alert() 方法，这个方法接受一个字符串并将其显示给用户。具体来说，调用 alert() 方法的结果就是向用户显示一个系统对话框，其中包含指定的文本和一个 确定 按钮。
+
+        //通常使用 alert() 生成的'警告'对话框向用户显示一些他们无法控制的消息，例如错误消息。而用户只能在看完消息后关闭对话框。
+
+        //第二种对话框是调用 confirm() 方法生成的。从向用户显示消息的方法来看，这种'确认'对话框除了显示 OK 按钮外，还会显示一个 Cancel ('取消') 按钮，两个按钮可以让用户决定是否执行给定的操作。
+
+        //为了确定用户是单击了 OK 还是 Cancel，可以检查 confirm() 方法返回的布尔值：true 表示单击了 OK，false 表示单击了 Cancel或单击了右上角的 X按钮
+
+        if (confirm('Are you sure?')) {
+
+            alert('Im so glad you sure');
+        } else {
+            alert('Im sorry to hear you not sure');
+        }
+
+        //在这个例子中，第一行代码（if条件语句）会向用户显示一个确认对话框。如果用户单击了 OK，则通过一个警告框向用户显示消息 Im so glad you sure。如果用户单击的是 Cancel 按钮，则通过警告框显示 Im sorry to hear you not sure。这种模式经常在用户想要执行删除操作的时候使用，例如删除电子邮件。
+
+        //最后一种对话框是通过调用 prompt() 方法生成的，这是一个'提示'框，用于提示用户输入一些文本。提示框中除了显示 OK 和 Cancel 按钮之外，还会显示一个文本输入域，以供用户在其中输入内容。prompt() 方法接受两个参数：要显示给用户的文本提示和文本输入域的默认值（可以是一个空字符串）
+
+        prompt('What your name?', 'Michael');
+    </script>
+</body>
+</html>

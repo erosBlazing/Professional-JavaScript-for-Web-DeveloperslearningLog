@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myDiv">Some text</div>
+    <fieldset>
+        <legend>Which color do you prefer?</legend>
+        <ul>
+            <li>
+                <input type="radio" value="red" name="color" id="colorRed">
+                <label for="colorRed">Red</label>
+            </li>
+            <li>
+                <input type="radio" value="green" name="color" id="colorGreen">
+                <label for="colorGreen">Green</label>
+            </li>
+            <li>
+                <input type="radio" value="blue" name="color" id="colorBlue">
+                <label for="colorBlue">Blue</label>
+            </li>
+        </ul>
+    </fieldset>
+    <script>
+        //说到最常见的 DOM 应用，恐怕就要数取得特定的某个或某组元素的引用，然后在执行一些操作了。取得元素的操作可以使用 document 对象的几个方法来完成。其中，Document 类型为此提供了两个方法：getElementById() 和 getElementsByTagName()。
+
+        //第一个方法，getElementById()，接收一个参数：要取得的元素的 ID。如果找到相应的元素则返回该元素，如果不存在带有相应 ID 的元素，则返回 null。注意，这里的 ID 必须与页面中元素的 id 特性严格匹配，包括大小写
+
+        //取得<div>元素的引用
+        var div = document.getElementById("myDiv");
+
+        //页面元素中的 id 应该具有唯一性，但如果页面中元素的 ID 值相同，getElementById() 只返回文档中第一次出现的元素。
+
+        //另一个常用语取得元素引用的方法是 getElementsByTagName()。这个方法接收一个参数，即要取得元素的标签名，而返回的是包含零或多个元素的 NodeList。在 HTML 文档中，这个方法会返回一个 HTMlCollection 对象，作为一个"动态"集合，该对象与 NodeList 非常类似。
+
+        var images = document.getElementsByTagName("img");
+
+        //第三个方法，也是只有 HTMLDocument 类型才有的方法，是 getElementsByName()。顾名思义，这个方法会返回带有给定 name 特性的所有元素。最常使用 getElementsByName() 方法的情况是取得单选按钮；为了确保发送给浏览器的值正确无误，所有单选按钮必须具有相同的 name 特性
+        
+        var radios = document.getElementsByName("color");
+
+        //与 getElementsByTagName() 类似，getElementsByName() 方法也会返回一个 HTMLCOllectioin。但是，对于这里的单选按钮来说，namedItem() 方法则只会取得第一项（因为每一项的 name 特性都相同）
+    </script>
+</body>
+</html>

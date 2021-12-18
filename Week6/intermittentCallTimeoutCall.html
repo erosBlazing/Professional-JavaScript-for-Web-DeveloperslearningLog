@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //JavaScript 是单线程语言，但它允许通过设置超时值和间歇时间值来调度代码在特定的时刻执行。前者是在指定的时间过后执行代码，而后者则是每隔指定的时间就执行一次代码。
+
+        //超时调用需要使用 window 对象的 setTimeout() 方法，它接受两个参数：要执行的代码和以毫秒表示的时间（即在执行代码前需要等待多少毫秒）。其中，第一个参数可以是一个包含 JavaScript 代码的字符串（就和在 eval() 函数中使用的字符串一样），也可以是一个函数
+
+        //不建议传递字符串
+        setTimeout('alert("Hello world!")', 1000);
+
+        //推荐的调用方式
+        setTimeout(function() {
+            alert('Hello wworld!');
+        }, 1000);
+
+        //虽然这两种调用方式都没有问题，但由于传递字符串可能导致性能损失，因此不建议以字符串作为第一个参数。
+
+        //第二个参数是一个表示等待多长时间的毫秒数，但经过该时间后指定的代码不一定会执行。JavaScript 是一个单线程序的解释器，因此一定时间内只能执行一段代码。为了控制要执行的代码，就有一个 JavaScript 任务队列。这些任务会按照将它们添加到队列的顺序执行。setTimeout() 的第二个参数告诉 JavaScript 再过多长时间把当前任务添加到队列中。如果队列是空的，那么添加的代码会立即执行；如果队列不是空的，那么它就要等前面的代码执行完了以后再执行。
+
+        //调用 setTimeout() 知乎，该方法会返回一个数值 ID，表示超时调用。这个超时调用 ID 是计划执行代码的唯一标识符，可以通过它来取消超时调用。要取消尚未执行的超时调用计划，是可以调用 clearTimeout() 方法并将相应的超时调用 ID 作为参数传递给它。
+
+        var timeoutId = setTimeout(function() {
+            alert('Hello world');
+        }, 1000);
+
+        //注意：把它取消
+        clearTimeout(timeoutId);
+
+
+        //间歇调用与超时调用类似，只不过它会按照指定的时间间隔重复执行代码，直至间歇调用被取消或者页面被卸载。设置间歇调用的方法是 setInterval(), 它接受的参数与 setTimeout() 相同：要执行的代码（字符串或函数）和每次执行之前需要等待的毫秒数。
+
+        //不建议传递字符串
+        setInterval("alert('Hello world!')", 1000);
+
+        //推荐的调用方式
+        setInterval(function() {
+            alert('Hello world');
+        }, 1000);
+
+        //调用 setInterval() 方法同样也会返回一个间歇调用 ID，该 ID 可用于在将来某个时刻取消间歇调用。要取消尚未执行的间歇调用，可以使用 clearInterval() 方法并传入相应的间歇调用 ID。取消间歇调用的重要性要远远高于取消超时调用，因为在不加干涉的情况下，间歇调用将会一直执行到页面卸载。
+
+        var num = 0;
+        var max = 10;
+        var intervalId = null;
+
+        function incrementNumber() {
+
+            num++;
+
+            //如果执行次数达到 max 设定的值，则取消后续尚未执行的调用
+            if (num == max) {
+
+                clearInterval(intervalId);
+                alert('Done');
+            }
+        }
+
+        intervalId = setInterval(incrementNumber, 500);
+
+        //在这个例子中，变量 num 没半秒钟递增一次，当递增到最大值时就会取消先前设定的间歇调用。这个模式也可以使用超时调用来实现
+
+        var num = 0;
+        var max = 10;
+
+        function incrementNumber() {
+
+            num++;
+
+            //如果执行次数未达到 max 设定的值，则设置另一次超时调用
+            if (num < max) {
+                
+                setTimeout(incrementNumber, 500);
+            } else {
+
+                alert('Done');
+            }
+        }
+
+        setTimeout(incrementNumber, 500);
+    </script>
+</body>
+</html>

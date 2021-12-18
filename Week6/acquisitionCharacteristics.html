@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myDiv" class="bd" title="Body text" my_special_attribute="hello!"></div>
+    <script>
+        //每个元素都有一或多个特性，这些特性的用途是给出相应元素或其内容的附加信息。操作特性的 DOM 方法主要有三个，分别是 getAttribute()、setAttribute() 和 removeAttribute().
+        var div = document.getElementById("myDiv");
+        alert(div.getAttribute("id"));  //"myDiv"
+        alert(div.getAttribute("class"));   //"bd"
+        alert(div.getAttribute("title"));   //"Body text"
+
+        //注意，传递给 getAttribute() 的特性名与实际的特姓名相同。因此要想得到 class 特性值，应该传入 "class" 而不是 "className"，后者只有在通过对象属性访问特性时才用。如果给定名称的特性不存在，getAttribute() 返回 null
+
+        //通过 getAttribute() 方法也可以取得自定义特性的值
+
+        var value = div.getAttribute("my_special_attribute");
+
+        //特性的名称不区分大小写，即"ID" 和 "id" 代表的都是同一个特性。另外，根据 HTML5 规范，自定义特性应该加上 data-前缀以便验证
+
+        //任何元素的所有特性，也都可以通过 DOM 元素本身的属性来访问。当然，HTMLELement 也会有 5个属性与相应的特性一一对应。不过，只有公认的（非自定义的）特性才会以属性的形式添加到 DOM 对象中。
+
+        //因为 id 和 align 在 HTML 中是<div>的公认特性，因此该元素的 DOM 对象中也将存在对应的属性。不过，自定义 my_special_attribute 在除 IE 浏览器外的浏览器中是不存在的。
+
+        //有两类特殊的特性，它们虽然有对应的属性名，但属性的值与通过 getAttribute() 返回的值并不相同。第一类特性就是 style，用于通过 CSS 为元素指定样式。在通过 getAttribute() 访问时，返回的 style 特性值中包含的是 CSS 文本，而通过属性来访问它则会返回一个对象。由于 style 属性是用于以编程方式访问元素样式的，因此并没有直接映射到 style 特性。
+
+        //第二类与众不同的特性是 onclick 这样的事件处理程序。当在元素上使用时，onclick 特性中包含的是 JavaScript 代码，如果通过 getAttribute() 访问，则会返回相应代码的字符串。而在访问 onclick 属性时，则会返回一个 JavaScript 函数（如果未在元素中指定相应特性，则返回 null）。这是因为 onclick 及其他事件处理程序属性本身就应该被赋予函数值。
+
+        //由于存在这些差别，在通过 JavaScript 以编程方式操作 DOM 时，开发人员经常不使用 getAttribute()，而是只使用对象的属性。只有在取得自定义特性值的情况下，才会使用 getAttribute() 方法。
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //getElementsByClassName() 方法接收一个参数，即一个包含一或多个类名的字符串，返回带有指定类的所有元素的 NodeList。传入多个类名时，类名的先后顺序不重要
+
+        //取得所有勒种包含 "username" 和 "current" 的元素，类名的先后顺序无所谓
+        var allCurrentUsernames = document.getElementsByClassName("username current");
+
+        //取得ID为 "myDiv" 的元素中带有类名 "selected" 的所有元素
+        var selected = document.getElementById("myDiv").getElementsByClassName("selected");
+
+        //在 document 对象上调用 getElementsByClassName() 始终会返回与类名匹配的所有元素，在元素上调用该方法就只会返回后代元素中匹配的元素。
+    </script>
+</body>
+</html>

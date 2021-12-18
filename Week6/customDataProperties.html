@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myDiv"></div>
+    <script>
+        //HTML5规定可以为元素添加非标准的属性，但要添加前缀 data-。添加自定义属性后，可以通过元素的 dataset 属性来访问自定义属性的值。
+
+        var div = document.getElementById("myDiv");
+
+        //取得自定义属性的值
+        var appId = div.dataset.appId;
+        var myName = div.dataset.myname;
+
+        //设置值
+        div.dataset.appId = 23456;
+        div.dataset.myname = "Michael";
+
+        //有没有 "myname" 值
+        if (div.dataset.myname) {
+
+            alert("Hello，" + div.dataset.myname);
+        }
+    </script>
+</body>
+</html>

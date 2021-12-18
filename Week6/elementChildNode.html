@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="myList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <script>
+        //在遍历子节点时，要注意除了 IE 浏览器外，为3个li元素，其他浏览器为3个li元素和4个文本节点
+
+        for (var i = 0, len = element.chidNodes.length; i < len; i++) {
+
+            if (element.childNodes[i].nodeType == 1) {
+                //执行某些操作
+            }
+        }
+
+        var ul = document.getElementById("myList");
+        var items = ul.getElementsByTagName('li');  //getElementsByTagName() 方法可以取得特定标签名的子节点或后代节点，但如果特定标签名包含更多层次的后代元素，那么各个层次中包含的子节点或后代节点都会返回
+    </script>
+</body>
+</html>

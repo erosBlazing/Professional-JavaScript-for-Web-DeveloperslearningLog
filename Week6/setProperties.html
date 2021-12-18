@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //与 getAttribute() 对应的方法是 setAttribute()，这个方法接收两个参数：要设置的特性名和值。如果特性已经存在，setAttribute() 会以指定的值替换现有的值；如果特性不存在，setAttribute() 则创建该属性并设置相应的值。
+
+        div.setAttribute("id", "someOtherId");
+        div.setAttribute("class", "ft");
+        div.setAttribute("title", "Some other text");
+        div.setAttribute("lang", "fr");
+        div.setAttribute("dir", "rtl");
+
+        //通过 setAttribute() 方法既可以操作 HTML 特性也可以操作自定义特性。通过这个方法设置的特性名会被统一转换为小写形式，即"ID" 最终会变成 "id".
+
+        //因为所有特性都是属性，所以直接给属性赋值可以设置特性的值
+
+        div.id = "someOtherId";
+        div.align = "left";
+    </script>
+</body>
+</html>

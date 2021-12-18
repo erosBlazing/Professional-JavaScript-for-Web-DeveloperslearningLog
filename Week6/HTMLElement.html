@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myDiv" class="bd" title="Body text"></div>
+    <script>
+        //所有 HTML 元素都由 HTMLElement 类型表示，不是直接通过这个类型，也是通过它的子类型来表示。HTMLElement 类型直接继承自 Element 并添加了一些属性。添加的这些属性分别对应于每个 HTML 元素中都存在的下列标准特性
+
+        //id，元素在文档中的唯一标识符
+        //title，有关元素的附加说明信息，一般通过工具提示条显示出来
+        //className，与元素的 class 特性对应，即为元素指定的 CSS 类。没有将这个属性命名为 class，是因为 class 是 ECMAScript 的保留字。
+
+        var div = document.getElementById("myDiv");
+        alert(div.id);  //'myDiv'
+        alert(div.className);   //'bd'
+        alert(div.title);   //'Body text'
+
+        div.id = "someOtherId";
+        div.className = "ft";
+        div.title = "Some other text";
+        div.lang = "fr";
+        div.dir = "rtl";
+
+        //并不是对所有属性的修改都会在页面中直观地表现出来。对 id 或 lang 的修改对用户而言是透明不可见的（假设没有基于它们的值设置的CSS样式），而对 title 的修改则只会在鼠标移动到这个元素之时才会显示出来。对 dir 的修改会在属性被重写的那一刻，立即影响页面中文本的左右对齐方式。修改 className 时，如果新类关联了与此前不同的 CSS 样式，那么就会立即应用新的样式。
+    </script>
+</body>
+</html>

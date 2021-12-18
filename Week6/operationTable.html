@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //创建table
+        var table = document.createElement("table");
+        table.style.border = "1px solid red";
+        table.style.width = "100%";
+        document.body.appendChild(table);
+
+        var tbody = document.createElement("tbody");
+        table.appendChild(tbody);
+
+        for(var i = 0; i <= 2; i++) {
+
+            var tr = document.createElement("tr");
+            tbody.appendChild(tr);
+
+            for(var j = 0; j <= 2; j++) {
+                
+                var td = document.createElement("td");
+                if(j > 0 && i > 0) {
+
+                    td.innerHTML = "Cell " + j + "，" + i;
+                    tr.appendChild(td);
+                }
+                
+            }
+        }
+    </script>
+</body>
+</html>

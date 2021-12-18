@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //querySelector() 方法接收一个 CSS 选择符，返回该模式匹配的第一个元素，如果没有找到匹配元素，返回 null
+
+        //取得 body 元素
+        var body = document.querySelector("body");
+
+        //取得 ID 为 "myDiv" 的元素
+        var myDiv = document.querySelector("#myDiv");
+
+        //取得类名为 "selected" 的第一个元素
+        var selected = document.querySelector(".selected");
+
+        //取得类名为 "button" 的第一个图像元素
+        var img = document.body.querySelector("img.button");
+
+        //通过 Document 类型调用 querySelector()，会在文档元素的范围内查找匹配元素。通过 Element 类型调用 querySelector()，只会在该元素后代元素的范围内查找匹配的元素。
+    </script>
+</body>
+</html>

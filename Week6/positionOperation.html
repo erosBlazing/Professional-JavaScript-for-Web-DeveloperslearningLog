@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //使用 location 对象可以通过很多方式来改变浏览器的为准。首先，也是最常用的方式，就是使用 assign() 方法并为其传递一个 URL
+
+        location.assign('http://www.baidu.com');
+
+        //这样，就可以立即打开新 URL 并在浏览器的历史记录中生成一条记录。如果是将 location.href 或 window.location 设置为一个 URL 值，也会以该值调用 assign() 方法。
+
+        window.location = 'http://www.baidu.com';
+        location.href = 'http://www.baidu.com';
+
+        //在这些改变浏览器位置的方法中，最常用的是设置 location.href 属性。
+        
+        //另外，修改 location 对象的其他属性也可以改变当前加载的页面
+
+        //假设初始 URL 为 http://www.baidu.com/WileyCDA
+
+        //将 URL 修改为 'http://www.baidu.com/WileyCDA/#section1'
+        location.hash = '#section1';
+
+        //将 URL 修改为 'http://www.baidu.com/WileyCDA/?javascript'
+        location.search = '?q=javascript';
+
+        //将 URL 修改为 'http://www.baidu.com/WileyCDA'
+        location.pathname = 'mydir';
+
+        //将 URL 修改为 'http://www.baidu.com:8080/WileyCDA'
+        location.port = 8080;
+
+        //每次修改 location 的属性（hash除外），页面都会以新 URL 重新加载
+
+        //当通过上述任何一种方式修改 URL 之后，浏览器的历史记录中就会生成一条新纪录，因此用户通过单击'后退'按钮都会导航到前一个页面。要禁用这种行为，可以使用 replace() 方法。这个方法只接受一个参数，即要导航到的 URL；结果虽然会导致浏览器位置改变，但不会在历史记录中生成新纪录。在调用 replace() 方法之后，用户不能回到前一个页面。
+
+        setTimeout(function () {
+            location.replace('http://www.baidu.com');
+        }, 1000);
+
+        //如果将这个页面加载到浏览器中，浏览器会在 1秒钟 后重新定向到 www.baidu.com 然后，'后退' 按钮将处于禁用状态，如果不重新输入完整的 URL，则无法返回示例页面
+
+        //与位置有关的最后一个方法是 reload()，作用是重新加载当前显示的页面。如果调用 reload() 时不传递任何参数，页面就会以最有效的方式重新加载。也就是说，如果页面自上次请求一来并没有改变过，页面就会从浏览器缓存中重新加载。
+
+        //如果要强制从服务器重新加载
+        location.reload();  //重新加载（有可能从缓存中加载）
+        location.reload(true);  //重新加载（从服务器重新加载）
+    </script>
+</body>
+</html>
